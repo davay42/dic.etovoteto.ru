@@ -1,9 +1,9 @@
 <script setup>
 const props = defineProps({
-	id: String
+	uid: { type: String, default: '' }
 })
 </script>
 
 <template lang='pug'>
-p USER {{ id }}
+p USER {{ uid }}
 </template>
