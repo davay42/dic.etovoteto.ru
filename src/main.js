@@ -3,6 +3,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 import App from "./app.vue";
 
+import './index.css'
 import 'uno.css'
 
 import 'floating-vue/dist/style.css'

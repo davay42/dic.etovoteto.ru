@@ -3,5 +3,5 @@
 </script>
 
 <template lang='pug'>
-p USERS
+p Авторы
 </template>

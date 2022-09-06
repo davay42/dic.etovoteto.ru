@@ -3,9 +3,8 @@
 </script>
 
 <template lang='pug'>
-.flex.flex-col
-	.text-xl Index
-	GenWord
-	Suspense
-		Dictionary
+.flex.flex-col.items-center.font-bold.gap-4
+	router-link.text-2xl.card(to="/words/") Слова
+	router-link.text-2xl.card(to="/defs/") Определения
+	router-link.text-2xl.card(to="/authors/") Авторы
 </template>

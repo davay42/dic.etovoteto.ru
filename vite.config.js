@@ -71,6 +71,7 @@ export default defineConfig({
       routeBlockLang: 'yaml',
       exclude: ['**/node_modules/**/*.*'],
       extensions: ['vue'],
+      importMode: 'async'
     }),
     // VitePWA({
     //   registerType: 'autoUpdate',

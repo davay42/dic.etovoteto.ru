@@ -5,5 +5,5 @@ const props = defineProps({
 </script>
 
 <template lang='pug'>
-p USER {{ uid }}
+p Определение {{ uid }}
 </template>
