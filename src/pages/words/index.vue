@@ -4,6 +4,5 @@
 
 <template lang='pug'>
 .p-0
-	Suspense
-		WordList
+	WordList
 </template>

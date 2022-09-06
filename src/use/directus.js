@@ -2,38 +2,75 @@ import { Directus } from '@directus/sdk';
 
 export const directus = new Directus('https://api.etovoteto.ru');
 
-export async function useWordDefs(defs) {
-	const definitions = [];
-	for (let id of defs) {
-		let link = await directus
-			.items('words_definitions')
-			.readOne(id)
-		let def = await directus
-			.items('definitions')
-			.readOne(link.definitions_id)
-		definitions.push(def)
+export function useWordDefs(defs) {
+	const definitions = reactive([]);
+
+	async function load() {
+		for (let id of defs) {
+
+			let link = await directus
+				.items('links')
+				.readOne(id)
+
+			let def = await directus
+				.items('definitions')
+				.readOne(link.def)
+
+			definitions.push(def)
+		}
 	}
+
+	load()
+
 	return definitions
 }
 
-export async function useWords() {
-	const {
-		data: words,
-		meta: { "total_count": count }
-	} = await directus
-		.items('words')
-		.readByQuery({ meta: 'total_count' });
+export function useWords() {
+	const words = ref()
+	const count = ref(0)
+
+	async function load() {
+		const {
+			data,
+			meta: { total_count }
+		} = await directus
+			.items('words')
+			.readByQuery({ meta: 'total_count' });
+		words.value = data
+		count.value = total_count
+	}
+
+	load()
 
 	return {
-		words, count
+		words, count, load
 	}
 }
 
-export async function useUser(id) {
+export function useWord(id) {
+	const word = ref()
 
-	const user = await directus.items('directus_users').readOne(id)
+	async function load() {
+		const data = await directus
+			.items('words')
+			.readOne(id);
+		word.value = data
+	}
+
+	load()
+	return { word, load }
+}
+
+
+
+export function useAuthor(id) {
+	const user = ref()
+	async function load() {
+		user.value = await directus.items('directus_users').readOne(id)
+	}
+	load()
 	return {
-		user
+		user, load
 	}
 }
 

@@ -1,8 +1,8 @@
-<script setup async>
+<script setup>
 import { useWords } from '~/use/directus.js'
 
 
-const { words, count } = await useWords()
+const { words, count } = useWords()
 
 
 </script>

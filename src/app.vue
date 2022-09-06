@@ -6,11 +6,11 @@
 <template lang="pug">
 .flex.flex-col.items-center
   head-panel
-  .max-w-100.flex.flex-col.pt-8
+  .max-w-100.flex.flex-col.pt-4
     router-view(v-slot="{ Component }")
       transition(name="fade" mode="out-in")
         keep-alive
-          component#content(:is="Component")
+          component#content.p-4(:is="Component" :key="$route.path")
 </template>
 
 <style lang="postcss">
