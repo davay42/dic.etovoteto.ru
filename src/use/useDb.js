@@ -25,27 +25,21 @@ export function useWordDefs(defs) {
 	return definitions
 }
 
-export function useWords() {
-	const words = ref()
+export function countItems(type = 'words', field = 'letters') {
 	const count = ref(0)
 
 	async function load() {
-		const {
-			data,
-			meta: { total_count }
-		} = await directus
-			.items('words')
-			.readByQuery({ meta: 'total_count' });
-		words.value = data
-		count.value = total_count
+		const { data } = await directus.items(type).readByQuery({ aggregate: { count: field } })
+		count.value = data?.[0]?.count?.[field]
 	}
-
 	load()
 
 	return {
-		words, count, load
+		load, count
 	}
 }
+
+
 
 export function useWord(id) {
 	const word = ref()
@@ -60,7 +54,6 @@ export function useWord(id) {
 	load()
 	return { word, load }
 }
-
 
 
 export function useAuthor(id) {

@@ -1,5 +1,5 @@
 <script setup>
-import { useAuthor } from '~/use/directus';
+import { useAuthor } from '~/use/useDb';
 
 const props = defineProps({
 	uid: { type: String, default: '' }

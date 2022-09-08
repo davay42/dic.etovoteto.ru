@@ -1,5 +1,5 @@
 <script setup>
-import { useWord } from '~/use/directus';
+import { useWord } from '~/use/useDb';
 import { renderWord } from '~/use/useDictionary.js'
 
 const props = defineProps({
