@@ -1,2 +1,0 @@
-import{e,o as t}from"./use.2d06ab88.js";import{_ as o}from"./index.3f0cc750.js";const c={class:"text-4xl text-center"};function r(n,s){return t(),e("div",c,"\u0418\u0437\u0432\u0438\u043D\u0438\u0442\u0435, \u0442\u0430\u043A\u0438\u0445 \u0441\u043B\u043E\u0432 \u043D\u0435 \u043D\u0430\u0448\u043B\u043E\u0441\u044C")}const _={},f=o(_,[["render",r]]);export{f as default};
-//# sourceMappingURL=_...all_.ac275751.js.map
