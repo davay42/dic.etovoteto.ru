@@ -6,6 +6,7 @@ export function useWordDefs(defs) {
 	const definitions = reactive([]);
 
 	async function load() {
+		if (!defs) return
 		for (let id of defs) {
 
 			let link = await directus

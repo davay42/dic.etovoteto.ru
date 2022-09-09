@@ -1,33 +1,25 @@
 <script setup>
 import { directus } from '~/use/useDb.js'
+import { useFuse } from '@vueuse/integrations/useFuse'
 
+const words = ref()
+const count = ref(0)
 
-function useWords() {
-	const words = ref()
-	const count = ref(0)
+async function load() {
+	const {
+		data,
+		meta: { total_count }
+	} = await directus
+		.items('words')
+		.readByQuery({
+			meta: 'total_count'
+		});
 
-	async function load() {
-		const {
-			data,
-			meta: { total_count }
-		} = await directus
-			.items('words')
-			.readByQuery({
-				meta: 'total_count'
-			});
-
-		words.value = data
-		count.value = total_count
-	}
-
-	load()
-
-	return {
-		words, count, load
-	}
+	words.value = data
+	count.value = total_count
 }
 
-const { words, count, load } = useWords()
+load()
 
 </script>
 

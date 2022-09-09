@@ -10,8 +10,8 @@ const { count: countAuthors } = countItems('directus_users', 'first_name')
 </script>
 
 <template lang='pug'>
-.flex.flex-col.items-center.font-bold.gap-4
-	router-link.text-2xl.card(to="/words/") Слова {{count}}
-	router-link.text-2xl.card(to="/defs/") Определения {{countDefs}}
-	router-link.text-2xl.card(to="/authors/") Авторы {{countAuthors}}
+.flex.flex-col.items-center.font-bold.gap-4.text-2xl
+	router-link.card(to="/words/") Слова {{count}}
+	router-link.card(to="/defs/") Определения {{countDefs}}
+	router-link.card(to="/authors/") Авторы {{countAuthors}}
 </template>

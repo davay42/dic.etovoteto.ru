@@ -1,5 +1,5 @@
 <script setup>
-import { useWord } from '~/use/useDb';
+import { useWord, useWordDefs } from '~/use/useDb';
 import { renderWord } from '~/use/useDictionary.js'
 
 const props = defineProps({
@@ -8,11 +8,14 @@ const props = defineProps({
 
 const { word } = useWord(props.uid)
 
+const defs = computed(() => useWordDefs(word.value?.defs))
+
 </script>
 
 <template lang='pug'>
 .flex.flex-col.gap-4 
 	.text-4xl.font-bold(v-html="renderWord(word?.letters, word?.stress)")
 	UserBadge(v-if="word?.user_created" :uid="word?.user_created")
-	.p-0 {{word}}
+	.flex.flex-col.gap-4 
+		DefCard(v-for="def in defs" :key="def.id" v-bind="def")
 </template>
