@@ -1,0 +1,2 @@
+import{d as n}from"./useDb.6749ae90.js";import{_ as c}from"./DefCard.163fddd0.js";import{a as i,e as d,q as m,I as u,C as l,y as p,o as t}from"./use.86967439.js";const f={class:"p-2"},B={__name:"[uid]",props:{uid:{type:String,default:""}},setup(s){const o=s,e=i();async function r(){const a=await n.items("definitions").readOne(o.uid);e.value=a}return r(),(a,_)=>(t(),d("div",f,[e.value?(t(),m(c,u(l({key:0},e.value)),null,16)):p("",!0)]))}};export{B as default};
+//# sourceMappingURL=_uid_.c014d6f8.js.map
