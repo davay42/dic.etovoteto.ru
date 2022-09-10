@@ -21,5 +21,14 @@ const props = defineProps({
 </script>
 
 <template lang='pug'>
-p AUTHOR
+.flex.flex-col.gap-1
+	.flex(style="flex: 1 1 100px" v-if="avatar")
+		img.rounded-full(:src="`https://api.etovoteto.ru/assets/${avatar}?width=100`")
+	.text-2xl.font-bold {{first_name}} {{last_name}}
+	.text-xs.font-mono {{email}}
+	.text-lg {{location}}
+	.text-md {{title}}
+	.text-sm {{description}}
+	.text-xs.font-mono 
+		slot
 </template>
