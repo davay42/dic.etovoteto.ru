@@ -1,3 +1,5 @@
+@import 'transitions.css'
+
 root {
   --font-family-base: 'Commissioner', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans',

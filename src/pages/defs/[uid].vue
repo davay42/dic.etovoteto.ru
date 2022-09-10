@@ -1,6 +1,6 @@
 <script setup>
 import { directus } from '~/use/useDb';
-import DefCard from '../../components/DefCard.vue';
+import DefCard from '~/components/DefCard.vue';
 
 
 const props = defineProps({

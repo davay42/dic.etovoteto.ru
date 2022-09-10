@@ -1,6 +1,6 @@
 <script setup async>
-import { renderWord } from '~/use/useDictionary.js'
-import { useWordDefs, useAuthor, messages } from '~/use/useDb.js'
+import { renderWord, messages } from '~/use/useDictionary.js'
+import { useWordDefs, useAuthor } from '~/use/useDb.js'
 import { useTimeAgo } from '@vueuse/core'
 
 const props = defineProps({

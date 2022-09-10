@@ -1,6 +1,6 @@
 <script setup async>
-import { renderWord } from '~/use/useDictionary.js'
-import { useWordDefs, useAuthor, messages } from '~/use/useDb.js'
+import { renderWord, messages } from '~/use/useDictionary.js'
+import { useWordDefs, useAuthor, } from '~/use/useDb.js'
 import { useTimeAgo } from '@vueuse/core'
 
 const props = defineProps({
@@ -12,7 +12,7 @@ const props = defineProps({
 	date_created: { type: String, default: '' }
 })
 
-const defs = useWordDefs(props.defs)
+const definitions = useWordDefs(props.defs)
 
 const { user } = useAuthor(props.user_created)
 
@@ -31,7 +31,7 @@ const timeAgo = useTimeAgo(props.date_created, {
 			:to="`/authors/${user?.id}`"
 		) {{ user?.first_name }} {{ user?.last_name }}
 	.flex.flex-col.gap-4.py-4
-		router-link.card(v-for="def in defs" :key="def" :to="`/defs/${def.id}`") {{ def.text }}
+		router-link.card(v-for="def in definitions" :key="def" :to="`/defs/${def.id}`") {{ def.text }}
 	.absolute.bottom-2.right-2.text-xs.opacity-30 {{ timeAgo }}
 	slot
 </template>
