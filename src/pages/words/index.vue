@@ -43,7 +43,7 @@ function addWord() {
 		letters: search.value,
 		stress: stress.value
 	}).then((entry) => {
-		console.log(entry)
+		load()
 		search.value = ''
 		router.push(`/words/${entry.id}`)
 	}).catch(e => {

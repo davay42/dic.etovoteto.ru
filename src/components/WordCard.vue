@@ -12,8 +12,6 @@ const props = defineProps({
 	date_created: { type: String, default: '' }
 })
 
-const definitions = useWordDefs(props.defs)
-
 const { user } = useAuthor(props.user_created)
 
 const timeAgo = useTimeAgo(props.date_created, {
@@ -23,15 +21,11 @@ const timeAgo = useTimeAgo(props.date_created, {
 </script>
 
 <template lang='pug'>
-.card.relative 
-	.flex.items-center
-		router-link.text-2xl.font-bold(v-html="renderWord(letters, stress)" :to="`/words/${id}`")
+router-link.card.relative(:to="`/words/${id}`")
+	.flex.items-center.gap-2.mb-2
+		.text-2xl.font-bold(v-html="renderWord(letters, stress)" )
 		.flex-auto
-		router-link.px-2.pb-1.rounded-xl.text-sm.py-0.bg-light-800.dark_bg-dark-800.opacity-20.hover-opacity-90.transition(
-			:to="`/authors/${user?.id}`"
-		) {{ user?.first_name }} {{ user?.last_name }}
-	.flex.flex-col.gap-4.py-4
-		router-link.card(v-for="def in definitions" :key="def" :to="`/defs/${def.id}`") {{ def.text }}
-	.absolute.bottom-2.right-2.text-xs.opacity-30 {{ timeAgo }}
+		.pb-1.px-2.bg-light-900.rounded-lg(v-if="defs.length>0") {{defs.length}}
+	.absolute.bottom-2.right-2.text-xs.opacity-30 {{ user?.first_name }} {{ user?.last_name }}  {{ timeAgo }}
 	slot
 </template>

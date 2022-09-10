@@ -10,7 +10,7 @@
     router-view(v-slot="{ Component }")
       transition(name="fade" mode="out-in")
         keep-alive
-          component#content.p-4(:is="Component" :key="$route.path")
+          component#content.p-4.w-full(:is="Component" :key="$route.path")
 </template>
 
 <style lang="postcss">
@@ -19,7 +19,7 @@ header {
 }
 
 .card {
-  @apply rounded-xl py-4 px-6 shadow-xl bg-light-200 dark-bg-dark-200;
+  @apply rounded-xl py-4 px-4 shadow-xl bg-light-200 dark-bg-dark-200;
 }
 </style>
 

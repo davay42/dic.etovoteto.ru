@@ -1,6 +1,5 @@
 <script setup>
 import { directus } from '~/use/useDb';
-import DefCard from '~/components/DefCard.vue';
 
 
 const props = defineProps({
@@ -13,13 +12,17 @@ async function load() {
 	const data = await directus
 		.items('definitions')
 		.readOne(props.uid);
-	def.value = data
+	def.value = data;
+	def.value.author = await directus.items('directus_users').readOne(data?.user_created, { fields: ['id', 'first_name', 'last_name', 'avatar'] })
 }
 
 load()
+
+
 </script>
 
 <template lang='pug'>
-.p-2 
-	DefCard(v-bind="def" v-if="def")
+.flex.flex-col.gap-2(v-if="def") 
+	.text-2xl {{def.text}}
+	pre.text-xs {{def}}
 </template>

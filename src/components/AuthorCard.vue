@@ -18,7 +18,9 @@ const props = defineProps({
 		img.rounded-full(:src="`https://api.etovoteto.ru/assets/${avatar}?width=100`")
 	.flex.flex-col.gap-2(style="flex: 1 1 200px")
 		.text-2xl.font-bold {{first_name}} {{last_name}}
-		.text-sm {{location}}
+		.flex(v-if="location")
+			.i-la-map-marker
+			.text-sm {{location}}
 		.text-md {{description}}
 	slot
 </template>
