@@ -57,9 +57,9 @@ function addWord() {
 .flex.flex-col.gap-4.py-4
 	input.p-4.text-xl(v-model="search" placeholder="Начните вводить слово")
 	.p-4(v-if="!search") Всего слов в словаре: {{count}}
-	.p-4(v-if="search && auth.ed") Укажите ударение
-		input(v-model="stress" type="number")
-		button(@click="addWord()") Добавить
+	.flex.flex-col.gap-2(v-if="search && auth.ed") Укажите ударение
+		.flex.flex-wrap.gap-2
+			.p-2.bg-light-700.shadow-xl.rounded.uppercase.cursor-pointer(v-for="(letter,l) in search.split('')" :key="letter" @click="stress = l; addWord()") {{letter}}
 
 
 	.flex.flex-col.gap-4()
@@ -76,6 +76,7 @@ function addWord() {
 					:key="word.id"
 					v-bind="word"
 					)
-	.flex.flex-col.p-4(v-if="search && results.length==0")
+	.flex.flex-col.p-4(v-if="search && !auth.ed && results.length==0")
 		.text-lg Слов не нашлось. Добавьте новое!
+	router-link.p-2.rounded-xl.bg-light-600.shadow-xl.font-bold.p-4(v-if="search && !auth.ed" to="/author/") Представьтесь
 </template>

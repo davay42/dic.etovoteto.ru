@@ -1,19 +1,22 @@
 <script setup>
+import { auth } from '~/use/useAuth';
+
 
 </script>
 
 <template lang='pug'>
 header
 	router-link.text-4xl(to="/") ЭТОВОТЭТО
-	.p-2.flex.gap-4
+	.flex.gap-4.text-3xl.p-2
 		router-link.link(to="/words/" v-tooltip.bottom="'Слова'")
-			.text-3xl.i-la-comment-dots
+			.i-la-comment-dots
 		router-link.link(to="/defs/" v-tooltip.bottom="'Определения'")
-			.text-3xl.i-la-comment
+			.i-la-comment
 		router-link.link(to="/authors/" v-tooltip.bottom="'Авторы'")
-			.text-3xl.i-la-users
+			.i-la-users
 		router-link.link(to="/author/" v-tooltip.bottom="'Автор'")
-			.text-3xl.i-la-user
+			.i-la-user(v-if="!auth.ed")
+			.i-la-user-check(v-else)
 	button.absolute.top-2.right-2(v-tooltip.bottom="'Словарь'")
 		.text-3xl.i-la-book
 </template>
