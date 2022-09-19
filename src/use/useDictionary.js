@@ -1,5 +1,6 @@
 export const vowels = 'аеёиоуыэюяАЕЁИОУЫЭЮЯ'
 export const stressMark = '&#x301;'
+export const vowelMask = /^[аеёиоуыэюяАЕЁИОУЫЭЮЯ]+$/
 export const wordMask = /^[а-яёА-ЯЁ]+$/
 export const defMask = /^[а-яё А-ЯЁ 1-9"«»!?,.-]+$/
 

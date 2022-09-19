@@ -3,6 +3,7 @@ import { directus } from '~/use/useDb.js'
 import Fuse from 'fuse.js'
 import { useRouter } from 'vue-router';
 import { useAuth } from '~/use/useAuth';
+import { vowelMask, vowels } from '~/use/useDictionary';
 const router = useRouter()
 
 const words = ref()
@@ -39,6 +40,8 @@ async function load() {
 load()
 
 function addWord() {
+	let stressOk = vowels.includes(search.value[stress.value])
+	if (!stressOk) return
 	directus.items('words').createOne({
 		letters: search.value,
 		stress: stress.value
@@ -51,6 +54,7 @@ function addWord() {
 	})
 }
 
+
 </script>
 
 <template lang='pug'>
@@ -59,8 +63,7 @@ function addWord() {
 	.p-4(v-if="!search") Всего слов в словаре: {{count}}
 	.flex.flex-col.gap-2(v-if="search && auth.ed") Укажите ударение
 		.flex.flex-wrap.gap-2
-			.p-2.bg-light-700.shadow-xl.rounded.uppercase.cursor-pointer(v-for="(letter,l) in search.split('')" :key="letter" @click="stress = l; addWord()") {{letter}}
-
+			.p-1.rounded.uppercase.select-none(v-for="(letter,l) in search.split('')" :key="letter" :class="{vowel: vowelMask.test(letter) }" @click="stress = l; addWord()") {{letter}}
 
 	.flex.flex-col.gap-4()
 		transition-group(name="fade")
@@ -80,3 +83,9 @@ function addWord() {
 		.text-lg Слов не нашлось. Добавьте новое!
 	router-link.p-2.rounded-xl.bg-light-600.shadow-xl.font-bold.p-4(v-if="search && !auth.ed" to="/author/") Представьтесь
 </template>
+
+<style scoped>
+.vowel {
+	--at-apply: cursor-pointer shadow-lg bg-light-600 font-bold;
+}
+</style>
