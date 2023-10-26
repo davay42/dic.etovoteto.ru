@@ -110,9 +110,6 @@ export default defineConfig({
     sourcemap: true,
     chunkSizeWarningLimit: Infinity,
     rollupOptions: {
-      manualChunks: {
-        'use': ['@vueuse/core', '@vueuse/math', '@vueuse/gesture']
-      }
     }
   },
 })
