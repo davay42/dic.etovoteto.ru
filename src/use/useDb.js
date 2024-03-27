@@ -1,6 +1,8 @@
 import { Directus } from '@directus/sdk';
 
-export const directus = new Directus('https://api.etovoteto.ru');
+export const directus = new Directus('https://api.etovoteto.ru', {
+
+});
 
 export function useWordDefs(defs) {
 	const definitions = reactive([]);
