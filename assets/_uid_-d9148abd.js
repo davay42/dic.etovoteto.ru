@@ -1,0 +1,2 @@
+import{_ as o}from"./AuthorCard-3fcfc989.js";import{C as r,d as n,k as c,y as p,z as u,e as i,o as _}from"./index-dbf58cde.js";const d={class:"flex flex-wrap gap-4 items-start"},x={__name:"[uid]",props:{uid:{type:String,default:""}},setup(e){const s=e,{user:t}=r(s.uid);return(l,m)=>{const a=o;return _(),n("div",d,[c(a,p(u(i(t))),null,16)])}}};export{x as default};
+//# sourceMappingURL=_uid_-d9148abd.js.map
